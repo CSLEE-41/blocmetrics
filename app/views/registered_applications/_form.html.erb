@@ -1,0 +1,15 @@
+<% if current_user %>
+  <%= form_for [@registered_applications, RegisteredApplication.new] do |f| %>
+    <div class="form-group">
+      <%= f.label :name %>
+      <%= f.text_field :name, placeholder: "Enter Application Name" %>
+    </div>
+    <div class= "form-group">
+      <%= f.label :url %>
+      <%= f.text_field :url, placeholder: "Enter Application URL"%>
+    </div>
+    <div class="form-group">
+      <%= f.submit "Submit Application", class: 'btn btn-success' %>
+    </div>
+  <% end %>
+<% end %>

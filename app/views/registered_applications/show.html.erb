@@ -1,0 +1,8 @@
+<div class="well">
+  <h2><%= @registered_application.name %></h2>
+  <h4><%= link_to @registered_application.url, @registered_application.url %></h4>
+</div>
+<div class= "row">
+  <%= link_to "Registered Applications", registered_applications_path, class: 'btn btn-success' %>
+</div>
+
