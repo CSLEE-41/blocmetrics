@@ -44,6 +44,8 @@ group :development, :test do
 end
 
 gem 'bootstrap-sass'
-
+gem 'pry'
 gem 'devise'
+
+gem 'faker'
 

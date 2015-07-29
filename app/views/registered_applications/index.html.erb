@@ -12,7 +12,7 @@
       </thead>
         <% @registered_applications.each do |registered_application| %>
         <tr>
-          <td><%= link_to registered_application.name, registered_application.name %></td>
+          <td><%= link_to registered_application.name, registered_application %></td>
           <td><%= link_to registered_application.url, registered_application.url %></td>
           <td>
             <%= link_to "Edit", edit_registered_application_path(registered_application), class: 'btn btn-success' %>

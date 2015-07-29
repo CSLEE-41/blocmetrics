@@ -1,6 +1,6 @@
 <div class= "col-md-4">
   <% if current_user %>
-    <%= form_for [@registered_applications, RegisteredApplication.new] do |f| %>
+    <%= form_for @registered_application do |f| %>
       <div class="form-group">
         <%= f.label :name %>
         <%= f.text_field :name, class: 'form-control', placeholder: "Enter Application Name" %>
