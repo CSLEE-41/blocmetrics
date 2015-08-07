@@ -4,15 +4,23 @@ class API::EventsController < ApplicationController
  
    def create
       registered_application = RegisteredApplication.find_by(url: request.env['HTTP_ORIGIN'])
+        # binding.pry
+
 
       if registered_application.nil?
+        #this will happen if the application that the request is sent from
+        #is not already registerd in the database
+        puts "First Failure"
         render json: "Unregistered application", status: :unprocessable_entity
       else
-        @event = registered_application.events.build(event_params)
+        @event = registered_application.events.build
+
+        @event.name = params[:event_name]
           
         if @event.save
           render json: @event, status: :created
         else
+          puts "Second Failure"
           render @event.errors, status: :unprocessable_entity
         end
       end
@@ -22,9 +30,9 @@ class API::EventsController < ApplicationController
 
   private
 
-  def event_params
-    params.permit(:event_name)
-  end
+  # def event_params
+  #   params.permit(:event_name)
+  # end
 
 
   def set_access_control_headers

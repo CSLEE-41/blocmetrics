@@ -1,14 +1,31 @@
 <div class="well">
-    <h2><%= @registered_application.name %></h2>
-    <h4><%= link_to @registered_application.url, @registered_application.url %></h4>
+  <h2><%= @registered_application.name %></h2>
+  <h4><%= link_to @registered_application.url, @registered_application.url %></h4>
 </div>
-<h4> Application Events </h4>
+  <h4> Application Events </h4>
+
 <div class = "row">
-                    <% #|key,value| %>
-  <% @events.each do |event, name| %>   
-    <%= event %>                       
-    <%= name.count %><hr>              
-  <% end %>
+  <div class= "col-md-8">
+    <table class= "table table-bordered">
+      <tbody>
+        <thead>
+          <tr>
+            <th> Name of Event </th>
+            <th> # of occurences </th>
+          </tr>
+             <% #|key,value| %>
+          <% @events.each do |event, name| %> 
+          <tr>  
+            <td><%= event %></td>                       
+            <td><%= name.count %></td>
+          </tr>              
+        <% end %>
+      </tbody>
+    </table>
+       <% #insert charts here during meeting/ reminder go over curl/ CS-JS %>
+       <%= pie_chart @registered_application.events.group(:name).count %>
+       <%= line_chart @registered_application.events.group_by_day(:created_at).count %>
+  </div>
 </div><br>
 
 <div class= "row">
