@@ -13,9 +13,9 @@ class API::EventsController < ApplicationController
         puts "First Failure"
         render json: "Unregistered application", status: :unprocessable_entity
       else
-        @event = registered_application.events.build
+        @event = registered_application.events.build(event_params)
 
-        @event.name = params[:event_name]
+        # @event.name = params[:event][:name]
           
         if @event.save
           render json: @event, status: :created
@@ -25,14 +25,18 @@ class API::EventsController < ApplicationController
         end
       end
     end
+
+    def options
+      render json: "", status: 200
+    end
  
 
 
   private
 
-  # def event_params
-  #   params.permit(:event_name)
-  # end
+  def event_params
+    params.require(:event).permit(:name)
+  end
 
 
   def set_access_control_headers
