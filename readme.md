@@ -1,4 +1,4 @@
-##[Prestige Analytics](https://pres-analy.herokuapp.com/)
+##[Prestige Analytics](https://prestige-analytics.herokuapp.com/)
 
 *API Tracking Service and Reporting Tool
 *PostgreSQL 
